@@ -39,9 +39,6 @@ jobs:
       - name: Build Vite app
         run: pnpm build
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:

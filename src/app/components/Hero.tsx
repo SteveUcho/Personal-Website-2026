@@ -8,8 +8,7 @@ const tickerItems = [
   { symbol: "REST" },
   { symbol: "MDB" },
   { symbol: "GO" },
-  { symbol: "VUE" },
-  { symbol: "PHP" },
+  { symbol: "SQL" },
 ];
 
 function TickerTape() {

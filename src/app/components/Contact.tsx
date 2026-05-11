@@ -4,7 +4,7 @@ const socialLinks = [
   { icon: Github, label: "GitHub", handle: "@SteveUcho", url: "https://github.com/SteveUcho" },
   { icon: Linkedin, label: "LinkedIn", handle: "/in/steveucho", url: "https://linkedin.com/in/steveucho" },
   { icon: Twitter, label: "Twitter", handle: "@SteveUcho", url: "https://twitter.com/SteveUcho" },
-  { icon: Mail, label: "Email", handle: "steve.ucho8@gmail.com", url: "mailto:steve.ucho8@gmail.com" },
+  { icon: Mail, label: "Email", handle: "contact@steveucho.com", url: "mailto:contact@steveucho.com" },
 ];
 
 export function Contact() {

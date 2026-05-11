@@ -11,6 +11,13 @@ const tickerItems = [
   { symbol: "SQL" },
 ];
 
+const characteristics = [
+  { label: "Years Experience", value: "3+" },
+  { label: "Public Repos", value: "14" },
+  { label: "Awards Won", value: "2" },
+  { label: "Languages", value: "10+" },
+];
+
 function TickerTape() {
   const doubledItems = [...tickerItems, ...tickerItems, ...tickerItems];
 
@@ -47,12 +54,7 @@ export function Hero() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-16">
-        {[
-          { label: "Years Experience", value: "3+" },
-          { label: "Public Repos", value: "14" },
-          { label: "Awards Won", value: "2" },
-          { label: "Languages", value: "10+" },
-        ].map((stat) => (
+        {characteristics.map((stat) => (
           <div key={stat.label} className="bg-card border border-border rounded p-3 md:p-4">
             <div className="text-xl md:text-2xl mb-1">{stat.value}</div>
             <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>

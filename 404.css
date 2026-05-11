@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-size: 16px;
+  --font-mono: 'Roboto Mono', monospace;
+  --background: #000000;
+  --foreground: white;
+  --card: #000000;
+  --primary: #00c087;
+  --secondary: #0a0a0a;
+  --muted: #0a0a0a;
+  --muted-foreground: #8b949e;
+  --border: #1a1a1a;
+  --gain: #00c087;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: var(--font-size);
+}
+
+/* Layout Classes */
+.page-container {
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  margin: auto;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.status-badge span {
+  padding: 0.125rem 0.5rem;
+  background-color: rgba(0, 192, 135, 0.1);
+  color: var(--gain);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .status-badge span {
+    font-size: 0.875rem;
+  }
+}
+
+.page-title {
+  font-size: 1.875rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .page-title {
+    font-size: 3rem;
+  }
+}
+
+.page-subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+.page-description {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 42rem;
+  font-size: 0.875rem;
+  margin: 0 auto 2rem;
+}
+
+@media (min-width: 768px) {
+  .page-description {
+    font-size: 1rem;
+  }
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.stat-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .stat-card {
+    padding: 1rem;
+  }
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+.stat-value.error {
+  color: var(--gain);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 768px) {
+  .stat-label {
+    font-size: 0.875rem;
+  }
+}
+
+/* Ticker Tape */
+.ticker-tape {
+  background-color: rgba(10, 10, 10, 0.5);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem;
+  overflow: hidden;
+  font-size: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .ticker-tape {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+.ticker-content {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 40s linear infinite;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+
+.ticker-symbol {
+  color: var(--foreground);
+}
+
+.ticker-label {
+  color: var(--muted-foreground);
+}
+
+.ticker-value {
+  color: var(--gain);
+}
+
+/* CTA Button */
+.cta-container {
+  margin-top: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem;
+  background-color: var(--gain);
+  color: var(--background);
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .cta-button {
+    display: block;
+    text-align: center;
+  }
+  
+  .page-container {
+    padding: 1rem 0.75rem;
+    justify-content: flex-start;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .page-description {
+    font-size: 0.875rem;
+  }
+  
+  .stats-grid {
+    gap: 0.5rem;
+  }
+  
+  .stat-card {
+    padding: 0.5rem;
+  }
+  
+  .stat-value {
+    font-size: 1.125rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  .ticker-tape {
+    font-size: 0.75rem;
+  }
+  
+  .cta-container {
+    margin-top: 1.5rem;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}

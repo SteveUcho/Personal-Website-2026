@@ -1,5 +1,3 @@
-import { TrendingUp, TrendingDown } from "lucide-react";
-
 interface Skill {
   name: string;
   ticker: string;

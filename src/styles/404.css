@@ -43,6 +43,7 @@ body {
   width: 100%;
   max-width: 1200px;
   text-align: center;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--border);
   margin: auto;
 }

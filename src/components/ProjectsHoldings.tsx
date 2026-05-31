@@ -1,7 +1,8 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Star } from "lucide-react";
 
 interface Project {
   name: string;
+  star?: boolean;
   description: string;
   tech: string[];
   github?: string;
@@ -10,22 +11,25 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Dumb-Money-Game",
+    star: true,
+    description: "Stock market simulation game for learning trading strategies",
+    tech: ["TypeScript", "React", "Node.js"],
+    github: "https://github.com/SteveUcho/dumb-money-game",
+    demo: "https://dumbmoney.steveucho.com/",
+  },
+  {
+    name: "Money-Game-Backend",
+    star: true,
+    description: "Go backend for current money related game frontend",
+    tech: ["Go", "Docker", "Ory Kratos", "Nginx", "Postgres"],
+    github: "https://github.com/SteveUcho/money-game-backend",
+  },
+  {
     name: "Shop-Builder",
     description: "Shopify clone-ish built with Next.js and modern web technologies",
     tech: ["TypeScript", "Next.js", "React"],
     github: "https://github.com/SteveUcho/next-vanilla-shop-builder",
-  },
-  {
-    name: "Dumb-Money-Game",
-    description: "Stock market simulation game for learning trading strategies",
-    tech: ["TypeScript", "React", "Node.js"],
-    github: "https://github.com/SteveUcho/dumb-money-game",
-  },
-  {
-    name: "Golang-Distributed-Server",
-    description: "Distributed server architecture built with Go (Fall 2020)",
-    tech: ["Go", "Distributed Systems"],
-    github: "https://github.com/SteveUcho/Golang-Distributed-Server",
   },
   {
     name: "Picture-Frame-Wifi",
@@ -54,16 +58,21 @@ export function ProjectsHoldings() {
         <h2 className="text-xl md:text-2xl">Project</h2>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
         {projects.map((project) => {
           return (
             <div
               key={project.name}
-              className="bg-card border border-border rounded p-4 md:p-6 hover:border-primary/50 transition-colors"
+              className={`bg-card border border-border rounded p-4 md:p-6 transition-colors ${project.star ? "hover:border-yellow-400/50" : "hover:border-primary/50"}`}
             >
               <div className="flex flex-col md:flex-row items-start justify-between mb-3 gap-3">
                 <div className="flex-1">
-                  <h3 className="text-lg md:text-xl mb-2">{project.name}</h3>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-lg md:text-xl">{project.name}</h3>
+                    {project.star && (
+                      <Star className="w-5 h-5 text-yellow-400" />
+                    )}
+                  </div>
                   <p className="text-muted-foreground mb-3 text-sm md:text-base">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
@@ -84,7 +93,7 @@ export function ProjectsHoldings() {
                     href={project.github}
                     className="flex items-center gap-1 text-xs md:text-sm text-primary hover:underline"
                   >
-                    <Github className="w-3 h-3 md:w-4 md:h-4" />
+                    <Github className="w-5 h-5" />
                     Code
                   </a>
                 )}
@@ -93,7 +102,7 @@ export function ProjectsHoldings() {
                     href={project.demo}
                     className="flex items-center gap-1 text-xs md:text-sm text-primary hover:underline"
                   >
-                    <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
+                    <ExternalLink className="w-5 h-5" />
                     Live Demo
                   </a>
                 )}

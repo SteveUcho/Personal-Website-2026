@@ -22,7 +22,7 @@ export function SkillsStock() {
   return (
     <div className="border-b border-border pb-12">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-2">
-        <h2 className="text-xl md:text-2xl">Skills Portfolio</h2>
+        <h2 className="text-xl md:text-2xl">Skills</h2>
         <div className="text-xs md:text-sm text-muted-foreground">Last updated: Today</div>
       </div>
 

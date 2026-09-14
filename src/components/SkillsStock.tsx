@@ -1,21 +1,18 @@
 interface Skill {
   name: string;
   ticker: string;
-  price: number;
-  change: number;
-  shares: number;
 }
 
 const skills: Skill[] = [
-  { name: "JavaScript", ticker: "JS", price: 98.5, change: 12.4, shares: 150 },
-  { name: "TypeScript", ticker: "TS", price: 96.2, change: 15.7, shares: 120 },
-  { name: "Node.js", ticker: "NODE", price: 94.3, change: 18.2, shares: 130 },
-  { name: "Python", ticker: "PY", price: 92.7, change: 8.3, shares: 110 },
-  { name: "GraphQL", ticker: "GQL", price: 91.6, change: 14.2, shares: 95 },
-  { name: "REST APIs", ticker: "REST", price: 95.4, change: 11.5, shares: 140 },
-  { name: "MongoDB", ticker: "MDB", price: 89.8, change: 16.8, shares: 105 },
-  { name: "Go", ticker: "GO", price: 87.2, change: 9.4, shares: 85 },
-  { name: "Vue", ticker: "VUE", price: 84.5, change: 7.1, shares: 75 },
+  { name: "JavaScript", ticker: "JS" },
+  { name: "TypeScript", ticker: "TS" },
+  { name: "Node.js", ticker: "NODE" },
+  { name: "Python", ticker: "PY" },
+  { name: "GraphQL", ticker: "GQL" },
+  { name: "REST APIs", ticker: "REST" },
+  { name: "MongoDB", ticker: "MDB" },
+  { name: "Go", ticker: "GO" },
+  { name: "Vue", ticker: "VUE" },
 ];
 
 export function SkillsStock() {

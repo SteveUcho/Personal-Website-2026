@@ -9,9 +9,7 @@ import "@/styles/index.css";
 import type { Project } from "@/types/projects";
 import type { Characteristics } from "@/types/hero";
 
-const octokit = new Octokit({
-  auth: import.meta.env.DEV ? import.meta.env.GITHUB_TOKEN : undefined,
-});
+const octokit = new Octokit({ auth: import.meta.env.GITHUB_TOKEN });
 
 const res = await octokit.graphql(`
   query {
@@ -84,7 +82,10 @@ projects = projects
 
 const characteristics: Characteristics[] = [
   { label: "Years Experience", value: "3+" },
-  { label: "Public Repos", value: (res as any).viewer.repositories.nodes.length.toString() },
+  {
+    label: "Public Repos",
+    value: (res as any).viewer.repositories.nodes.length.toString(),
+  },
   { label: "Awards Won", value: "2" },
   { label: "Languages", value: "10+" },
 ];

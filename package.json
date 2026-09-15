@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "bunx --bun astro build",
+    "build": "astro build",
     "dev": "bunx --bun astro dev",
     "preview": "bunx --bun astro preview"
   },

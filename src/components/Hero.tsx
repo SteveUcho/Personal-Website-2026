@@ -1,32 +1,26 @@
+import type { Characteristics } from "@/types/hero";
 
 const tickerItems = [
-  { symbol: "JS" },
-  { symbol: "TS" },
-  { symbol: "NODE" },
-  { symbol: "PY" },
-  { symbol: "GQL" },
-  { symbol: "REST" },
-  { symbol: "MDB" },
-  { symbol: "GO" },
-  { symbol: "SQL" },
-];
-
-const characteristics = [
-  { label: "Years Experience", value: "3+" },
-  { label: "Public Repos", value: "14" },
-  { label: "Awards Won", value: "2" },
-  { label: "Languages", value: "10+" },
+  "JS",
+  "TS",
+  "NODE",
+  "PY",
+  "GQL",
+  "REST",
+  "MDB",
+  "GO",
+  "SQL",
 ];
 
 function TickerTape() {
-  const doubledItems = [...tickerItems, ...tickerItems, ...tickerItems];
+  const items = [...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
     <div className="flex gap-8 animate-[scroll_40s_linear_infinite]">
-      {doubledItems.map((item, index) => {
+      {items.map((item, index) => {
         return (
           <div key={index} className="flex items-center gap-3 whitespace-nowrap">
-            <span className="text-foreground">{item.symbol}</span>
+            <span className="text-foreground">{item}</span>
             <span className="text-muted-foreground">score</span>
             <span className="text-gain">8/10</span>
           </div>
@@ -36,7 +30,13 @@ function TickerTape() {
   );
 }
 
-export function Hero() {
+interface HeroProps {
+  characteristics: Characteristics[];
+}
+
+export function Hero(props: Readonly<HeroProps>) {
+  const { characteristics } = props;
+
   return (
     <div className="border-b border-border pb-12 relative overflow-hidden min-h-fit h-[70vh] content-center">
       <div className="flex flex-col md:flex-row items-start justify-between mb-8 gap-6">
@@ -48,7 +48,7 @@ export function Hero() {
           <p className="text-lg md:text-xl text-muted-foreground mb-4">Software Engineer</p>
           <p className="text-foreground/80 max-w-2xl text-sm md:text-base">
             Computer science graduate from NYU '21 with a reputation for being a fast learner.
-            I seek out problems and challenges. Specialized in back-end web development, REST APIs, and GraphQL.
+            I seek out problems and challenges. Specialized in full-stack web development, REST APIs, and GraphQL.
           </p>
         </div>
       </div>

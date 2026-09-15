@@ -4,7 +4,90 @@ import { SkillsStock } from "@/components/SkillsStock";
 import { Experience } from "@/components/Experience";
 import { ProjectsHoldings } from "@/components/ProjectsHoldings";
 import { Contact } from "@/components/Contact";
+import { Octokit } from "octokit";
 import "@/styles/index.css";
+import type { Project } from "@/types/projects";
+import type { Characteristics } from "@/types/hero";
+
+const octokit = new Octokit({
+  auth: import.meta.env.DEV ? import.meta.env.GITHUB_TOKEN : undefined,
+});
+
+const res = await octokit.graphql(`
+  query {
+    viewer {
+      repositories(first: 50, orderBy: { field: PUSHED_AT, direction: DESC }) {
+        nodes {
+          name
+          description
+          url
+          homepageUrl
+          languages(first: 3) {
+            nodes {
+              name
+            }
+          }
+          repositoryTopics(first: 10) {
+            nodes {
+              topic {
+                name
+              }
+            }
+          }
+          pushedAt
+        }
+      }
+      pinnedItems(first: 6) {
+        nodes {
+          ... on Repository {
+            name
+          }
+        }
+      }
+    }
+  }
+`);
+
+const pinnedItems = new Set(
+  (res as any).viewer.pinnedItems.nodes.map((item: any) => item.name),
+);
+
+let projects: Project[] = (res as any).viewer.repositories.nodes.map(
+  (repo: any) => ({
+    name: repo.name,
+    description: repo.description || "",
+    pushedAt: repo.pushedAt,
+    tech: repo.languages.nodes
+      .map((lang: any) => lang.name)
+      .concat(
+        repo.repositoryTopics.nodes.map((topic: any) => topic.topic.name),
+      ),
+    github: repo.url,
+    demo: repo.homepageUrl || "",
+    star: pinnedItems.has(repo.name),
+  }),
+);
+
+// list pinned items first, if it has a demo it should go first
+projects.sort((a, b) => {
+  if (pinnedItems.has(a.name) && !pinnedItems.has(b.name)) return -1;
+  if (!pinnedItems.has(a.name) && pinnedItems.has(b.name)) return 1;
+  // if both have demos, put the one with demo first
+  if (a.demo && !b.demo) return -1;
+  if (!a.demo && b.demo) return 1;
+  return 0;
+});
+
+projects = projects
+  .filter((project) => !project.name.includes("-fork"))
+  .slice(0, 16);
+
+const characteristics: Characteristics[] = [
+  { label: "Years Experience", value: "3+" },
+  { label: "Public Repos", value: (res as any).viewer.repositories.nodes.length.toString() },
+  { label: "Awards Won", value: "2" },
+  { label: "Languages", value: "10+" },
+];
 ---
 
 <!doctype html>
@@ -20,10 +103,10 @@ import "@/styles/index.css";
       <div
         class="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-12 space-y-8 md:space-y-12"
       >
-        <Hero />
+        <Hero characteristics={characteristics} />
         <SkillsStock />
         <Experience />
-        <ProjectsHoldings />
+        <ProjectsHoldings projects={projects} />
         <Contact />
       </div>
     </div>

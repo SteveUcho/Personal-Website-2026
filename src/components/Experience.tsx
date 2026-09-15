@@ -19,17 +19,6 @@ const experiences: ExperienceItem[] = [
     ],
   },
   {
-    company: "Accrete.AI",
-    position: "Software Engineer Intern",
-    period: "September 2018 - May 2019",
-    description: "Built ML data infrastructure and storage systems",
-    achievements: [
-      "Developed realtime ML data normalization applications using JavaScript and MongoDB change streams",
-      "Designed permission and file storage system for structured and unstructured data",
-      "Implemented scalable data pipeline architecture",
-    ],
-  },
-  {
     company: "MIDASoft Inc. | The Americas",
     position: "API Developer Intern",
     period: "May 2019 - June 2019",
@@ -40,6 +29,18 @@ const experiences: ExperienceItem[] = [
       "Improved data integration across multiple systems",
     ],
   },
+  {
+    company: "Accrete.AI",
+    position: "Software Engineer Intern",
+    period: "September 2018 - May 2019",
+    description: "Built ML data infrastructure and storage systems",
+    achievements: [
+      "Developed realtime ML data normalization applications using JavaScript and MongoDB change streams",
+      "Designed permission and file storage system for structured and unstructured data",
+      "Implemented scalable data pipeline architecture",
+    ],
+  },
+
   {
     company: "Accrete.AI",
     position: "Knowledge and Annotation Intern",

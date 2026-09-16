@@ -8,6 +8,7 @@ import { Octokit } from "octokit";
 import "@/styles/index.css";
 import type { Project } from "@/types/projects";
 import type { Characteristics } from "@/types/hero";
+import Layout from "@/pages/layout.astro";
 
 const octokit = new Octokit({ auth: import.meta.env.GITHUB_TOKEN });
 
@@ -91,25 +92,16 @@ const characteristics: Characteristics[] = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Steve Ucho</title>
-  </head>
-
-  <body>
-    <div class="min-h-screen bg-background">
-      <div
-        class="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-12 space-y-8 md:space-y-12"
-      >
-        <Hero characteristics={characteristics} />
-        <SkillsStock />
-        <Experience />
-        <ProjectsHoldings projects={projects} />
-        <Contact />
-      </div>
+<Layout title="Steve Ucho">
+  <div class="min-h-screen bg-background">
+    <div
+      class="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-12 space-y-8 md:space-y-12"
+    >
+      <Hero characteristics={characteristics} />
+      <SkillsStock />
+      <Experience />
+      <ProjectsHoldings projects={projects} />
+      <Contact />
     </div>
-  </body>
-</html>
+  </div>
+</Layout>

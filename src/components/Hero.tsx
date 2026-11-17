@@ -1,35 +1,5 @@
 import type { Characteristics } from "@/types/hero";
 
-const tickerItems = [
-  "JS",
-  "TS",
-  "NODE",
-  "PY",
-  "GQL",
-  "REST",
-  "MDB",
-  "GO",
-  "SQL",
-];
-
-function TickerTape() {
-  const items = [...tickerItems, ...tickerItems, ...tickerItems];
-
-  return (
-    <div className="flex gap-8 animate-[scroll_40s_linear_infinite]">
-      {items.map((item, index) => {
-        return (
-          <div key={index} className="flex items-center gap-3 whitespace-nowrap">
-            <span className="text-foreground">{item}</span>
-            <span className="text-muted-foreground">score</span>
-            <span className="text-gain">8/10</span>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
 interface HeroProps {
   characteristics: Characteristics[];
 }
@@ -38,7 +8,7 @@ export function Hero(props: Readonly<HeroProps>) {
   const { characteristics } = props;
 
   return (
-    <div className="border-b border-border pb-12 relative overflow-hidden min-h-fit h-[70vh] content-center">
+    <div className="border-b border-border relative overflow-hidden min-h-fit h-[70vh] content-center">
       <div className="flex flex-col md:flex-row items-start justify-between mb-8 gap-6">
         <div>
           <div className="flex items-center gap-2 mb-2">
@@ -61,21 +31,6 @@ export function Hero(props: Readonly<HeroProps>) {
           </div>
         ))}
       </div>
-
-      <div className="absolute left-0 right-0 bg-secondary/50 border-y border-border py-2 md:py-3 overflow-hidden text-xs md:text-base">
-        <TickerTape />
-      </div>
-
-      <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.333%);
-          }
-        }
-      `}</style>
     </div>
   );
 }
